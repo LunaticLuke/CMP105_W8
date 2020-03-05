@@ -23,14 +23,21 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-	
+	ball1.update(dt);
+	ball2.update(dt);
+	if (Collision::checkBoundingCircle(&ball1, &ball2))
+	{
+		ball1.collisionResponse();
+		ball2.collisionResponse();
+	}
 }
 
 // Render level
 void Level::render()
 {
 	beginDraw();
-
+	window->draw(ball1);
+	window->draw(ball2);
 	endDraw();
 }
 

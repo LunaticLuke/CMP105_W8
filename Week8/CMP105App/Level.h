@@ -4,6 +4,8 @@
 #include "Framework/Input.h"
 #include <string>
 #include <iostream>
+#include "Ball.h"
+#include "Framework/Collision.h"
 
 
 class Level{
@@ -23,4 +25,6 @@ private:
 	// Default variables for level class.
 	sf::RenderWindow* window;
 	Input* input;
+	Ball ball1 = Ball(sf::Vector2f(200, 200));
+	Ball ball2 = Ball(sf::Vector2f(600, 200));
 };
