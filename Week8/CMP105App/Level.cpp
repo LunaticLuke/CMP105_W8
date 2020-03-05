@@ -4,9 +4,11 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 {
 	window = hwnd;
 	input = in;
-
+	ballObject.setRenderWindow(window);
 	// initialise game objects
-
+	paddle1.setInput(in);
+	paddle2.setInput(in);
+	
 }
 
 Level::~Level()
@@ -17,13 +19,14 @@ Level::~Level()
 // handle user input
 void Level::handleInput(float dt)
 {
-
+	paddle1.handleInput(dt);
+	paddle2.handleInput(dt);
 }
 
 // Update game objects
 void Level::update(float dt)
 {
-	ball1.update(dt);
+	/*ball1.update(dt);
 	ball2.update(dt);
 	box1.update(dt);
 	box2.update(dt);
@@ -36,6 +39,13 @@ void Level::update(float dt)
 	{
 		box1.collisionResponse();
 		box2.collisionResponse();
+	}*/
+	paddle1.update(dt);
+	paddle2.update(dt);
+	ballObject.update(dt);
+	if (Collision::checkBoundingBox(&paddle1, &ballObject) || Collision::checkBoundingBox(&paddle2,&ballObject))
+	{
+		ballObject.CollisionResponse();
 	}
 }
 
@@ -43,10 +53,13 @@ void Level::update(float dt)
 void Level::render()
 {
 	beginDraw();
-	window->draw(ball1);
+	/*window->draw(ball1);
 	window->draw(ball2);
 	window->draw(box1);
-	window->draw(box2);
+	window->draw(box2);*/
+	window->draw(paddle1);
+	window->draw(paddle2);
+	window->draw(ballObject);
 	endDraw();
 }
 

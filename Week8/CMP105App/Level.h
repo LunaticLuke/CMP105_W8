@@ -7,6 +7,8 @@
 #include "Ball.h"
 #include "Framework/Collision.h"
 #include "AABBSprite.h"
+#include "PongBall.h"
+#include "PongPaddle.h"
 
 
 class Level{
@@ -30,4 +32,7 @@ private:
 	Ball ball2 = Ball(sf::Vector2f(600, 200));
 	AABBSprite box1 = AABBSprite(sf::Vector2f(200, 500), sf::Color::Blue);
 	AABBSprite box2 = AABBSprite(sf::Vector2f(600, 500), sf::Color::Red);
+	PongBall ballObject;
+	PongPaddle paddle1 = PongPaddle(1);
+	PongPaddle paddle2 = PongPaddle(2);
 };
