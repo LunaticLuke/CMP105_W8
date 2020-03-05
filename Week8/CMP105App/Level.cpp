@@ -25,10 +25,17 @@ void Level::update(float dt)
 {
 	ball1.update(dt);
 	ball2.update(dt);
+	box1.update(dt);
+	box2.update(dt);
 	if (Collision::checkBoundingCircle(&ball1, &ball2))
 	{
 		ball1.collisionResponse();
 		ball2.collisionResponse();
+	}
+	if (Collision::checkBoundingBox(&box1, &box2))
+	{
+		box1.collisionResponse();
+		box2.collisionResponse();
 	}
 }
 
@@ -38,6 +45,8 @@ void Level::render()
 	beginDraw();
 	window->draw(ball1);
 	window->draw(ball2);
+	window->draw(box1);
+	window->draw(box2);
 	endDraw();
 }
 

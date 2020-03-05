@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Ball.h"
 #include "Framework/Collision.h"
+#include "AABBSprite.h"
 
 
 class Level{
@@ -27,4 +28,6 @@ private:
 	Input* input;
 	Ball ball1 = Ball(sf::Vector2f(200, 200));
 	Ball ball2 = Ball(sf::Vector2f(600, 200));
+	AABBSprite box1 = AABBSprite(sf::Vector2f(200, 500), sf::Color::Blue);
+	AABBSprite box2 = AABBSprite(sf::Vector2f(600, 500), sf::Color::Red);
 };
